@@ -1,0 +1,24 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laosnetwork.io/api/write-queries/GettingStarted
+docs: https://docs.laosnetwork.io/api/introduction
+summary:
+  types: [apiKey]
+  api_key_in: [header]
+  oauth2_flows: []
+  notes: >-
+    Read-only GraphQL queries (AllCollectionAssets, Inventory, AssetHistory,
+    LAOSCollection, token/tokens/transfers/tokenHistory) require NO authentication.
+    Write mutations (createCollection, mint/mintAsync, evolve/evolveBatch,
+    broadcast) require an API key issued by the LAOS Foundation.
+schemes:
+- name: apiKeyHeader
+  type: apiKey
+  in: header
+  parameter_name: x-api-key
+  applies_to: write mutations
+  obtain: Contact info@laosnetwork.io / the LAOS Foundation to request a private API key.
+  key_binding: >-
+    Each key is associated with a web3 address that holds LAOS tokens, POLs and
+    ETH used to pay gas for minting/evolving. Testnet keys are pre-funded.
+  sources: [graphql/freeverse-laos-client-api-schema.graphql]
