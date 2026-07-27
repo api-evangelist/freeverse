@@ -1,7 +1,18 @@
 aid: freeverse
 name: Freeverse
-description: Freeverse is a company surfaced as a portfolio company of earlybird and added to the API
-  Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Freeverse is the team behind the LAOS Network, an EVM-compatible Polkadot
+  parachain and public blockchain protocol for Bridgeless Minting and Evolution
+  of digital assets (NFTs). Rather than bridging tokens between chains, LAOS lets
+  applications mint and dynamically evolve NFTs whose ownership is enforced on
+  established chains such as Ethereum and Polygon while the asset logic and gas
+  costs live on LAOS. The LAOS Foundation maintains a public GraphQL API at
+  api.laosnetwork.io that lets developers create collections, mint up to 700 NFTs
+  in a single atomic operation, evolve existing assets, broadcast assets to
+  marketplaces, and run read queries over an on-chain indexer. Read queries are
+  open; write mutations require an API key. Freeverse originated as a Barcelona
+  blockchain gaming and digital-ownership company (Living Assets, Crypto-soccer)
+  and is a portfolio company of Earlybird Venture Capital.
 url: https://raw.githubusercontent.com/api-evangelist/freeverse/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -9,14 +20,122 @@ x-backed-by:
 - earlybird
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-19'
+image: https://laosnetwork.io/favicon.ico
 tags:
 - Company
-apis: []
+- Blockchain
+- NFT
+- Web3
+- Digital Assets
+- Gaming
+- GraphQL
+- Polkadot
+- Ethereum
+- Tokenization
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
+apis:
+- name: LAOS Network API
+  description: >-
+    Public GraphQL API maintained by the LAOS Foundation for Bridgeless Minting
+    and Evolution of NFTs. Create collections, mint up to 700 NFTs atomically,
+    evolve assets, broadcast to marketplaces, and run read queries (inventory,
+    asset history, transfers) over the LAOS indexer across Ethereum and Polygon.
+  humanURL: https://docs.laosnetwork.io/api/introduction
+  baseURL: https://api.laosnetwork.io/v2/graphql
+  tags:
+  - NFT
+  - GraphQL
+  - Blockchain
+  - Minting
+  properties:
+  - type: GraphQL
+    url: graphql/freeverse-laos-client-api-schema.graphql
+  - type: GraphQL
+    url: graphql/freeverse-laos-indexer-schema.graphql
+  - type: Authentication
+    url: authentication/freeverse-authentication.yml
+  - type: Conventions
+    url: conventions/freeverse-conventions.yml
+  - type: DataModel
+    url: data-model/freeverse-data-model.yml
+  - type: ErrorCatalog
+    url: errors/freeverse-error-codes.yml
+  - type: MCPServer
+    url: mcp/freeverse-mcp.yml
+  - type: Examples
+    url: examples/freeverse-laos-examples.yml
+common:
+- type: DeveloperPortal
+  url: https://docs.laosnetwork.io/
+- type: Documentation
+  url: https://docs.laosnetwork.io/
+- type: APIReference
+  url: https://docs.laosnetwork.io/api/introduction
+- type: GettingStarted
+  url: https://docs.laosnetwork.io/api/write-queries/GettingStarted
+- type: Website
+  url: https://laosnetwork.io/
+- type: GitHubOrganization
+  url: https://github.com/freeverseio
+- type: Blog
+  url: https://laosnetwork.io/blog
+- type: Support
+  url: https://laosnetwork.io/community
+- type: Discord
+  url: https://discord.gg/laosnetwork
+- type: Roadmap
+  url: https://github.com/freeverseio/LAOS-roadmap
+- type: ChangeLog
+  url: https://docs.laosnetwork.io/tokenomics/change-log
+- type: ChangeLog
+  url: changelog/freeverse-changelog.yml
+- type: Whitepaper
+  url: https://github.com/freeverseio/laos-whitepaper
+- type: SDKs
+  url: packages/freeverse-packages.yml
+- type: Packages
+  url: packages/freeverse-packages.yml
+- type: Authentication
+  url: authentication/freeverse-authentication.yml
+- type: Conventions
+  url: conventions/freeverse-conventions.yml
+- type: DataModel
+  url: data-model/freeverse-data-model.yml
+- type: ErrorCatalog
+  url: errors/freeverse-error-codes.yml
+- type: Lifecycle
+  url: lifecycle/freeverse-lifecycle.yml
+- type: Conformance
+  url: conformance/freeverse-conformance.yml
+- type: MCPServer
+  url: mcp/freeverse-mcp.yml
+- type: LLMsTxt
+  url: llms/freeverse-llms.txt
+- type: AgentSkill
+  url: skills/_index.yml
+- type: DomainSecurity
+  url: security/freeverse-domain-security.yml
+x-enrichment:
+  date: '2026-07-19'
+  status: backfilled
+  pass: local-v1
+  note: backfilled from .gitignore signal + verified work evidence

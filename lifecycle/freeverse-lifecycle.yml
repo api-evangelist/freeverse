@@ -1,0 +1,30 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laosnetwork.io/api/introduction
+versioning:
+  scheme: uri-path
+  current: v2
+  endpoint: https://api.laosnetwork.io/v2/graphql
+  docs: https://docs.laosnetwork.io/api/introduction
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: >-
+    No formal API deprecation/sunset policy is published. The GraphQL indexer
+    schema does mark individual fields deprecated via the GraphQL @deprecated
+    directive (e.g. ownershipContractByUniqueInput -> "Use ownershipContractById").
+  deprecated_operations:
+  - graphql/freeverse-laos-indexer-schema.graphql#ownershipContractByUniqueInput
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+changelog:
+  url: https://docs.laosnetwork.io/tokenomics/change-log
+  artifact: changelog/freeverse-changelog.yml
+roadmap: https://github.com/freeverseio/LAOS-roadmap
+notes: >-
+  Read queries are permissionless and open; write access is gated by an API key
+  from the LAOS Foundation. No public status page or SLA was found. StatusPage
+  and Deprecation canonical pointers are intentionally NOT emitted (no status
+  page and no formal deprecation policy published).

@@ -1,0 +1,35 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/freeverse-laos-client-api-schema.graphql
+docs: https://docs.laosnetwork.io/api/introduction
+format: graphql-errors
+envelope:
+  transport: >-
+    LAOS exposes a GraphQL API, so protocol-level failures are returned in the
+    standard top-level "errors" array (each with message, and optionally
+    locations/path/extensions) rather than RFC 9457 problem+json. HTTP status is
+    typically 200 for GraphQL responses that carry an errors array; the API
+    endpoint returns HTTP 400 to non-GraphQL (e.g. bare GET) requests.
+  async_status_field: >-
+    Asynchronous mutations (mintAsync, evolveAsync) and status queries
+    (mintResponse, evolveBatchResponse) carry blockchain-level outcome on the
+    payload via "status" (String!) and "message" (String!) fields, plus an
+    optional TransactionReceiptType (txHash, blockHash, blockNumber, gasUsed,
+    status).
+categories:
+- area: authentication
+  cause: Missing or invalid x-api-key header on a write mutation.
+  remediation: Add a valid x-api-key header; request a key from info@laosnetwork.io.
+- area: validation
+  cause: Invalid GraphQL input (unsupported chainId, malformed EVM address, missing required field, batch >700 tokens).
+  remediation: Use a supported chainId (1 or 137), valid 0x addresses, and <=700 tokens per atomic batch.
+- area: blockchain-execution
+  cause: On-chain transaction failure (insufficient gas balance on the key's web3 address, reverted mint/evolve).
+  remediation: >-
+    Ensure the API-key's associated web3 address holds LAOS tokens / POL / ETH
+    for gas; inspect the returned TransactionReceiptType.status and message.
+notes: >-
+  LAOS does not publish a numbered error-code registry or an RFC 9457 problem-type
+  catalog. This artifact captures the GraphQL error envelope and the observed
+  failure classes derived from the schema and getting-started docs. Not a payments
+  acquirer, so no decline-code catalog applies.

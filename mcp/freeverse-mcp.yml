@@ -1,0 +1,42 @@
+generated: '2026-07-19'
+method: derived
+status: candidate
+source: graphql/freeverse-laos-client-api-schema.graphql, graphql/freeverse-laos-indexer-schema.graphql
+server:
+  name: freeverse-laos
+  transport: http
+  url: null
+  notes: No official hosted/remote MCP server was found for LAOS/Freeverse; tools below are DERIVED candidates from the GraphQL operations.
+tools:
+- name: create_collection
+  description: Create a new bridgeless-minting NFT collection (deploys ERC721 + batch minter + sibling LAOS collection).
+  source_operation: graphql/freeverse-laos-client-api-schema.graphql#createCollection
+  write: true
+- name: mint_nfts
+  description: Mint up to 700 NFTs atomically to given owners in a collection.
+  source_operation: graphql/freeverse-laos-client-api-schema.graphql#mintAsync
+  write: true
+- name: evolve_nfts
+  description: Evolve (update metadata of) previously minted assets, atomically in batches.
+  source_operation: graphql/freeverse-laos-client-api-schema.graphql#evolveBatchAsync
+  write: true
+- name: broadcast_assets
+  description: Broadcast assets on-chain so non-LAOS-native marketplaces index them.
+  source_operation: graphql/freeverse-laos-client-api-schema.graphql#broadcast
+  write: true
+- name: get_mint_status
+  description: Poll the status of an async mint by txHash/trackingId.
+  source_operation: graphql/freeverse-laos-client-api-schema.graphql#mintResponse
+  write: false
+- name: list_inventory
+  description: List all tokens owned by an address within a collection.
+  source_operation: graphql/freeverse-laos-indexer-schema.graphql#tokens
+  write: false
+- name: get_asset_history
+  description: Retrieve the full evolution/transfer history of a token.
+  source_operation: graphql/freeverse-laos-indexer-schema.graphql#tokenHistory
+  write: false
+- name: list_transfers
+  description: List on-chain transfer events for a token or contract.
+  source_operation: graphql/freeverse-laos-indexer-schema.graphql#transfers
+  write: false

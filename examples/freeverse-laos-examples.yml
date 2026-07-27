@@ -1,0 +1,107 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laosnetwork.io/api
+endpoint: https://api.laosnetwork.io/v2/graphql
+examples:
+- name: Create a collection
+  operation: createCollection
+  auth: x-api-key
+  docs: https://docs.laosnetwork.io/api/write-queries/CreateCollection
+  request: |
+    mutation CreateCollection {
+      createCollection(
+        input: { name: "My first Bridgeless Minting Collection", symbol: "MFBC", chainId: "137" }
+      ) {
+        batchMinterAddress
+        chainId
+        contractAddress
+        laosAddress
+        name
+        success
+        symbol
+      }
+    }
+- name: Mint NFTs (async, recommended)
+  operation: mintAsync
+  auth: x-api-key
+  docs: https://docs.laosnetwork.io/api/write-queries/MintNFT
+  request: |
+    mutation MintNFT {
+      mintAsync(
+        input: {
+          chainId: "137"
+          contractAddress: "0x370d32d6fcef88e0a008d23a1a602f33b6fcf251"
+          tokens: [
+            {
+              mintTo: ["0x4E6Da57f62b9954fBb6bAb531F556BE08E128e75"]
+              name: "Intro to LAOS NFT"
+              description: "This is my first LAOS Mint!"
+              attributes: [{ trait_type: "Level", value: "Introduction" }]
+              image: "ipfs://QmPC9LrMuN6YkcJBRhBcWiDcS4ndkx3cwXdVNQ59PY8EBq"
+            }
+          ]
+        }
+      ) { status message txHash }
+    }
+- name: Evolve NFTs (async)
+  operation: evolveAsync
+  auth: x-api-key
+  docs: https://docs.laosnetwork.io/api/write-queries/EvolveNFT
+  request: |
+    mutation EvolveNFT {
+      evolveAsync(
+        input: {
+          chainId: "137"
+          contractAddress: "0xc7471bab04d2f53f6e79c754e19fdbd1e5a4a3c3"
+          tokens: [
+            {
+              tokenId: "46231769497101023895754357762572931969783788518045090509665456129453327552117"
+              name: "Intro to LAOS NFT lvl 2"
+              description: "This is my first LAOS Evolution!"
+              attributes: { trait_type: "Level", value: "Introduction Evolved" }
+              image: "ipfs://QmUjVkeX1yUSbunCaXMWVsxrzcQCSBVEJzDoheowy1D3tb"
+            }
+          ]
+        }
+      ) { status message txHash }
+    }
+- name: Broadcast assets to marketplaces
+  operation: broadcast
+  auth: x-api-key
+  docs: https://docs.laosnetwork.io/api/write-queries/Broadcast
+  request: |
+    mutation Broadcast {
+      broadcast(
+        input: {
+          tokenIds: ["46231769497101023895754357762572931969783788518045090509665456129453327552117"]
+          chainId: "137"
+          ownershipContractAddress: "0xc7471bab04d2f53f6e79c754e19fdbd1e5a4a3c3"
+          type: "SELF"
+        }
+      ) { tokenIds success }
+    }
+- name: Read user inventory (no API key)
+  operation: tokens
+  auth: none
+  docs: https://docs.laosnetwork.io/api/read-queries/Inventory
+  request: |
+    query Inventory {
+      tokens(
+        where: { chainId: "137", contractAddress: "0x9f16fc5a49afa724407225e97edb8775fe4eb9fb", owner: "0xb09b3fd2a408e4dfab7a1c6fd28365c369d2f006" }
+      ) {
+        totalCount
+        edges { node { description image name tokenId owner } }
+      }
+    }
+- name: Read asset history (no API key)
+  operation: tokenHistory
+  auth: none
+  docs: https://docs.laosnetwork.io/api/read-queries/AssetHistory
+  request: |
+    query AssetHistory {
+      tokenHistory(
+        chainId: "137"
+        contractAddress: "0x9f16fc5a49afa724407225e97edb8775fe4eb9fb"
+        tokenId: "66411355714187073314704920013201981051255304368864801044887078638344704552966"
+      ) { updatedAt name tokenUri description image attributes }
+    }

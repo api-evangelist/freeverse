@@ -1,0 +1,55 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/freeverse-laos-indexer-schema.graphql, graphql/freeverse-laos-client-api-schema.graphql
+docs: https://docs.laosnetwork.io/api/introduction
+entities:
+- name: OwnershipContract
+  description: An ERC721 ownership contract on a target chain (Ethereum/Polygon) with its sibling LAOS collection.
+  key: id
+  fields: [id, laosContract, name, symbol, bytecodeHash]
+- name: Token
+  description: A bridgelessly-minted NFT (asset) with dynamic, evolvable metadata.
+  key: tokenId
+  fields: [tokenId, laosContract, contractAddress, owner, initialOwner, tokenUri, name, description, image, attributes, createdAt, block_number]
+- name: TokenHistory
+  description: A past state of a token capturing evolutions and metadata changes over time.
+  fields: [contractAddress, tokenUri, name, description, image, attributes, block_number, tx_hash, updatedAt]
+- name: Transfer
+  description: An on-chain ownership transfer event for a token.
+  fields: [from, to, timestamp, blockNumber, txHash, tokenId, contractAddress]
+- name: Attribute
+  description: A trait_type/value metadata attribute attached to a token.
+  fields: [trait_type, value]
+- name: Collection
+  description: A minting collection created via createCollection; deploys the ERC721 + batch-minter and a sibling LAOS collection.
+  fields: [chainId, name, symbol, contractAddress, laosAddress, batchMinterAddress]
+relationships:
+- from: Token
+  to: OwnershipContract
+  kind: belongs_to
+  via: contractAddress
+- from: OwnershipContract
+  to: Token
+  kind: has_many
+  via: contractAddress
+- from: Token
+  to: TokenHistory
+  kind: has_many
+  via: tokenId
+- from: Token
+  to: Transfer
+  kind: has_many
+  via: tokenId
+- from: Token
+  to: Attribute
+  kind: has_many
+  via: attributes
+- from: OwnershipContract
+  to: Collection
+  kind: has_one
+  via: laosContract (sibling LAOS collection address)
+identifiers:
+  chainId: {type: string, values: ['1 (Ethereum)', '137 (Polygon)']}
+  contractAddress: EVM 0x address of the ERC721 on the target chain
+  laosAddress: EVM address of the sibling collection on LAOS (0xffff...)
+  tokenId: uint256 rendered as decimal string

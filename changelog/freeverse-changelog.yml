@@ -1,0 +1,13 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laosnetwork.io/tokenomics/change-log
+scheme: uri-path (API served under /v2/)
+current_version: v2
+entries: []
+notes: >-
+  LAOS publishes a change-log page under the tokenomics section of the docs, but
+  it is not a structured, dated API changelog with per-release entries at the
+  time of capture (the API surface is documented at v2). No dated release
+  entries were extractable to record verbatim; the docs change-log URL is wired
+  as the authoritative source. Recent-window entries left empty rather than
+  fabricated.

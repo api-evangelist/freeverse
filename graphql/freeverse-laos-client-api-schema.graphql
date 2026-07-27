@@ -1,0 +1,168 @@
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Query {
+  status: String!
+  mintResponse(txHash: String!): MintStatusResponse!
+  evolveBatchResponse(txHash: String!): EvolveStatusResponse!
+}
+
+type MintStatusResponse {
+  txHash: String
+  status: String!
+  message: String!
+  receipt: TransactionReceiptType
+  tokenIds: [String!]
+}
+
+type TransactionReceiptType {
+  txHash: String
+  blockHash: String
+  blockNumber: Int
+  gasUsed: Float
+  cumulativeGasUsed: Float
+  status: Int
+}
+
+type EvolveStatusResponse {
+  txHash: String
+  status: String!
+  message: String!
+  receipt: TransactionReceiptType
+  tokenIds: [String!]
+}
+
+type Mutation {
+  mint(input: MintInput!): MintResponse!
+  mintAsync(input: MintInput!): MintAsyncResponse!
+  evolve(input: EvolveInput!): EvolveResponse!
+  evolveBatch(input: EvolveBatchInput!): EvolveBatchResponse!
+  evolveBatchAsync(input: EvolveBatchInput!): EvolveAsyncResponse!
+  broadcast(input: BroadcastInput!): BroadcastResponse!
+  broadcastBatch(input: BroadcastBatchInput!): BroadcastBatchResponse!
+  createCollection(input: CreateCollectionInput!): CreateCollectionResponse!
+}
+
+type MintResponse {
+  numberOfTokens: Int!
+  tokenIds: [String!]!
+  success: Boolean!
+}
+
+input MintInput {
+  chainId: String!
+  contractAddress: String!
+  tokens: [TokenInput!]!
+}
+
+input TokenInput {
+  name: String!
+  description: String
+  attributes: [AttributeInput!]
+  image: String
+  mintTo: [String!]!
+}
+
+input AttributeInput {
+  trait_type: String!
+  value: String!
+}
+
+type MintAsyncResponse {
+  txHash: String
+  status: String!
+  message: String!
+  tokenIds: [String!]
+  contractAddress: String
+}
+
+type EvolveResponse {
+  tokenId: String!
+  success: Boolean!
+  tokenUri: String!
+  tx: String!
+}
+
+input EvolveInput {
+  chainId: String!
+  contractAddress: String!
+  tokenId: String!
+  name: String!
+  description: String
+  attributes: [AttributeInput!]
+  image: String
+}
+
+type EvolveBatchResponse {
+  success: Boolean!
+  tx: String!
+  tokens: [EvolveTokenResponse!]!
+}
+
+type EvolveTokenResponse {
+  tokenId: String!
+  tokenUri: String
+}
+
+input EvolveBatchInput {
+  chainId: String!
+  contractAddress: String!
+  tokens: [TokenEvolveInput!]!
+}
+
+input TokenEvolveInput {
+  tokenId: String!
+  name: String!
+  description: String
+  attributes: [AttributeInput!]
+  image: String
+}
+
+type EvolveAsyncResponse {
+  status: String!
+  message: String!
+  txHash: String!
+  tokenIds: [String!]
+}
+
+type BroadcastResponse {
+  tokenId: String!
+  success: Boolean!
+}
+
+input BroadcastInput {
+  type: String
+  tokenId: String!
+  chainId: String!
+  ownershipContractAddress: String!
+}
+
+type BroadcastBatchResponse {
+  tokenIds: [String!]
+  success: Boolean!
+}
+
+input BroadcastBatchInput {
+  type: String
+  tokenIds: [String!]!
+  chainId: String!
+  ownershipContractAddress: String!
+}
+
+type CreateCollectionResponse {
+  chainId: String!
+  name: String!
+  symbol: String!
+  contractAddress: String!
+  laosAddress: String!
+  batchMinterAddress: String!
+  success: Boolean!
+}
+
+input CreateCollectionInput {
+  chainId: String!
+  name: String!
+  symbol: String!
+}

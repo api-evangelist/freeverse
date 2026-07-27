@@ -1,0 +1,233 @@
+schema {
+  query: Query
+}
+
+type Query {
+  ownershipContracts(where: OwnershipContractWhereInput, orderBy: [OwnershipContractOrderByInput!], offset: Int, limit: Int): [OwnershipContract!]!
+  ownershipContractById(id: String!): OwnershipContract
+  ownershipContractByUniqueInput(where: WhereIdInput!): OwnershipContract @deprecated(reason: "Use ownershipContractById")
+  ownershipContractsConnection(orderBy: [OwnershipContractOrderByInput!]!, after: String, first: Int, where: OwnershipContractWhereInput): OwnershipContractsConnection!
+  token(tokenId: String!, contractAddress: String!): TokenQueryResult
+  tokens(orderBy: TokenOrderByOptions, pagination: TokenPaginationInput! = {first: 10}, where: TokenWhereInput): TokenConnection
+  tokenOwners(where: TokenOwnersWhereInput): [TokenOwnersQueryResult!]
+  transfers(orderBy: TransferOrderByOptions, pagination: TransferPaginationInput, where: TransferWhereInput): [TransferQueryResult!]
+  tokenHistory(pagination: TokenHistoryPaginationInput, tokenId: String!, contractAddress: String!): [TokenHistoryQueryResult!]
+}
+
+type OwnershipContract {
+  id: String!
+  laosContract: String
+  name: String
+  symbol: String
+  bytecodeHash: String
+}
+
+input OwnershipContractWhereInput {
+  id_eq: String
+}
+
+enum OwnershipContractOrderByInput {
+  id_ASC
+  id_DESC
+  id_ASC_NULLS_FIRST
+  id_ASC_NULLS_LAST
+  id_DESC_NULLS_FIRST
+  id_DESC_NULLS_LAST
+  laosContract_ASC
+  laosContract_DESC
+  laosContract_ASC_NULLS_FIRST
+  laosContract_ASC_NULLS_LAST
+  laosContract_DESC_NULLS_FIRST
+  laosContract_DESC_NULLS_LAST
+  name_ASC
+  name_DESC
+  name_ASC_NULLS_FIRST
+  name_ASC_NULLS_LAST
+  name_DESC_NULLS_FIRST
+  name_DESC_NULLS_LAST
+  symbol_ASC
+  symbol_DESC
+  symbol_ASC_NULLS_FIRST
+  symbol_ASC_NULLS_LAST
+  symbol_DESC_NULLS_FIRST
+  symbol_DESC_NULLS_LAST
+  bytecodeHash_ASC
+  bytecodeHash_DESC
+  bytecodeHash_ASC_NULLS_FIRST
+  bytecodeHash_ASC_NULLS_LAST
+  bytecodeHash_DESC_NULLS_FIRST
+  bytecodeHash_DESC_NULLS_LAST
+}
+
+input WhereIdInput {
+  id: String!
+}
+
+type OwnershipContractsConnection {
+  edges: [OwnershipContractEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Int!
+}
+
+type OwnershipContractEdge {
+  node: OwnershipContract!
+  cursor: String!
+}
+
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String!
+  endCursor: String!
+}
+
+type TokenQueryResult {
+  tokenId: String!
+  laosContract: String!
+  contractName: String
+  contractSymbol: String
+  contractBytecodeHash: String
+  owner: String!
+  tokenUri: String
+  tokenUriFetchState: String
+  contractAddress: String
+  createdAt: DateTime!
+  initialOwner: String!
+  name: String
+  description: String
+  image: String
+  attributes: JSON
+  block_number: Float!
+}
+
+"""
+A date-time string in simplified extended ISO 8601 format (YYYY-MM-DDTHH:mm:ss.sssZ)
+"""
+scalar DateTime
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON
+
+type TokenQueryResultSelect {
+  tokenId: String!
+  laosContract: String!
+  contractName: String
+  contractSymbol: String
+  contractBytecodeHash: String
+  owner: String!
+  tokenUri: String
+  tokenUriFetchState: String
+  contractAddress: String
+  createdAt: DateTime!
+  initialOwner: String!
+  name: String
+  description: String
+  image: String
+  attributes: JSON
+  block_number: Float!
+  logIndex: Float!
+}
+
+type TokenEdge {
+  cursor: String!
+  node: TokenQueryResult!
+}
+
+type TokenConnection {
+  edges: [TokenEdge!]!
+  pageInfo: PageInfo!
+  totalCount: Float!
+}
+
+type TransferQueryResult {
+  from: String!
+  to: String!
+  timestamp: DateTime!
+  blockNumber: Float!
+  txHash: String!
+  tokenId: String!
+  contractAddress: String
+}
+
+type TokenHistoryQueryResult {
+  contractAddress: String
+  tokenUri: String
+  tokenUriFetchState: String
+  name: String
+  description: String
+  image: String
+  attributes: JSON
+  block_number: Float!
+  tx_hash: String!
+  updatedAt: DateTime!
+}
+
+type TokenOwnersQueryResult {
+  owner: String!
+  initialOwner: String
+}
+
+input PaginationInput {
+  limit: Int!
+  offset: Int! = 0
+}
+
+input TransferPaginationInput {
+  limit: Int!
+  offset: Int! = 0
+}
+
+input TokenPaginationInput {
+  first: Int!
+  after: String
+}
+
+input TokenHistoryPaginationInput {
+  limit: Int!
+  offset: Int! = 0
+  orderBy: TokenHistoryOrderByOptions
+}
+
+"""Possible options for ordering token histories"""
+enum TokenHistoryOrderByOptions {
+  UPDATED_AT_ASC
+  UPDATED_AT_DESC
+}
+
+input TransferWhereInput {
+  tokenId: String
+  contractAddress: String
+  to: String
+  from: String
+  to_startsWith: String
+}
+
+input TokenWhereInput {
+  contractAddress: String
+  owner: String
+  laosContract: String
+  tokenId: String
+}
+
+input TokenOwnersWhereInput {
+  laosContract: String
+  contractAddress: String
+  tokenId: String
+  owner: String
+}
+
+"""Possible options for ordering tokens"""
+enum TokenOrderByOptions {
+  CREATED_AT_ASC
+  CREATED_AT_DESC
+}
+
+"""Possible options for ordering transfers"""
+enum TransferOrderByOptions {
+  TIMESTAMP_ASC
+  TIMESTAMP_DESC
+  BLOCKNUMBER_ASC
+  BLOCKNUMBER_DESC
+}

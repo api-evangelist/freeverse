@@ -1,0 +1,36 @@
+generated: '2026-07-19'
+method: searched
+source: https://www.npmjs.com/~freeverse
+packages:
+- language: javascript
+  registry: npm
+  name: freeverse-marketsigner-js
+  version: 4.0.5
+  url: https://www.npmjs.com/package/freeverse-marketsigner-js
+  install: npm install freeverse-marketsigner-js
+  repository: https://github.com/freeverseio/market-signer
+  description: Library for creating digests and signatures used to trade assets in the Living Assets Layer-2 market.
+  official: true
+- language: javascript
+  registry: npm
+  name: freeverse-crypto-js
+  version: 2.0.0
+  url: https://www.npmjs.com/package/freeverse-crypto-js
+  install: npm install freeverse-crypto-js
+  repository: https://github.com/freeverseio/crypto-js
+  description: Library for creating, managing and exporting identities/accounts (AES-encrypted private key export).
+  official: true
+- language: javascript
+  registry: npm
+  name: freeverse-apisigner-js
+  version: 2.0.0
+  url: https://www.npmjs.com/package/freeverse-apisigner-js
+  install: npm install freeverse-apisigner-js
+  repository: https://github.com/freeverseio/api-signer
+  description: JS library for creating and managing Living Assets (signing queries to manage assets).
+  official: true
+notes: >-
+  The freeverseio/sdk repo ("Galactic SDK") is an upstream fork of
+  galacticcouncil/sdk and is NOT a first-party LAOS/Freeverse client library, so
+  it is excluded. Solidity contract packages (laos-erc721, laos-smart-contracts)
+  are on-chain contracts, not client SDKs.

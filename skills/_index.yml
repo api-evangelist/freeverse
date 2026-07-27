@@ -1,0 +1,12 @@
+generated: '2026-07-19'
+method: generated
+source: graphql/freeverse-laos-client-api-schema.graphql
+skills:
+- file: freeverse-create-collection-and-mint.md
+  name: Create a LAOS collection and mint NFTs
+  api: graphql/freeverse-laos-client-api-schema.graphql
+  operations: [createCollection, mintAsync, mintResponse]
+- file: freeverse-evolve-and-broadcast.md
+  name: Evolve LAOS assets and broadcast to marketplaces
+  api: graphql/freeverse-laos-client-api-schema.graphql
+  operations: [evolveBatchAsync, broadcast, evolveBatchResponse]

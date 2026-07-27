@@ -1,0 +1,68 @@
+generated: '2026-07-19'
+method: searched
+source: https://docs.laosnetwork.io/api/introduction
+api_style: graphql
+endpoint: https://api.laosnetwork.io/v2/graphql
+authentication:
+  style: api-key
+  header: x-api-key
+  scope: write mutations only; read queries are open
+  ref: authentication/freeverse-authentication.yml
+versioning:
+  scheme: uri-path
+  current: v2
+  location: path segment (/v2/graphql)
+idempotency:
+  supported: false
+  notes: >-
+    No client idempotency-key mechanism is documented. Batch mutations (mint,
+    evolveBatch, broadcast) are ATOMIC ("if the operation fails, no NFTs are
+    minted") which provides all-or-nothing transactionality, not request-level
+    idempotency. Async mutations (mintAsync/evolveAsync) return a trackingId /
+    txHash used to poll status, which can be used for client-side dedup of
+    submitted work.
+async_pattern:
+  supported: true
+  mutations: [mintAsync, evolveAsync]
+  returns: trackingId / txHash
+  status_queries: [mintResponse, evolveBatchResponse, status]
+  recommended: true
+batching:
+  supported: true
+  max_items: 700
+  operations: [mint, evolveBatch, broadcast]
+  semantics: atomic (all-or-nothing)
+pagination:
+  styles:
+  - name: relay-cursor
+    used_by: [tokens, ownershipContractsConnection]
+    request_params: [first, after]
+    response_fields: [edges, node, cursor, pageInfo, totalCount]
+    page_info: [hasNextPage, hasPreviousPage, startCursor, endCursor]
+  - name: offset-limit
+    used_by: [ownershipContracts, transfers, tokenHistory]
+    request_params: [limit, offset]
+ordering:
+  param: orderBy
+  enums: [CREATED_AT_ASC, CREATED_AT_DESC, TIMESTAMP_ASC, TIMESTAMP_DESC, UPDATED_AT_ASC, UPDATED_AT_DESC]
+filtering:
+  param: where
+  inputs: [TokenWhereInput, TransferWhereInput, OwnershipContractWhereInput, TokenOwnersWhereInput]
+  common_fields: [chainId, contractAddress, owner, tokenId, laosContract]
+chains:
+  supported:
+  - {name: Ethereum Mainnet, chainId: '1'}
+  - {name: Polygon PoS Mainnet, chainId: '137'}
+  param: chainId (string)
+error_envelope:
+  style: graphql-errors
+  notes: >-
+    GraphQL top-level "errors" array on failures. Async mutations also surface a
+    "status" + "message" field on the response payload for blockchain-level
+    outcome reporting.
+  ref: errors/freeverse-error-codes.yml
+cross_links:
+  authentication: authentication/freeverse-authentication.yml
+  errors: errors/freeverse-error-codes.yml
+  lifecycle: lifecycle/freeverse-lifecycle.yml
+  data_model: data-model/freeverse-data-model.yml

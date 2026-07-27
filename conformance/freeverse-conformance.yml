@@ -1,0 +1,28 @@
+generated: '2026-07-19'
+method: derived
+source: graphql/freeverse-laos-client-api-schema.graphql, graphql/freeverse-laos-indexer-schema.graphql
+standards:
+- id: graphql
+  conforms: true
+  evidence: Public GraphQL API at api.laosnetwork.io/v2/graphql with schema, query and mutation types.
+- id: relay-cursor-connections
+  conforms: true
+  evidence: tokens/ownershipContractsConnection expose edges/node/cursor/pageInfo (hasNextPage/endCursor) per the Relay Connections spec.
+- id: erc721
+  conforms: true
+  evidence: Collections deploy ERC721 ownership contracts on target chains; bridgeless minting extends OpenZeppelin ERC721.
+- id: evm
+  conforms: true
+  evidence: EVM-compatible operations across Ethereum (chainId 1) and Polygon (chainId 137).
+- id: oauth2
+  conforms: false
+  evidence: Auth is a single x-api-key header on write mutations; no OAuth2/OIDC.
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: GraphQL errors array is used, not application/problem+json.
+- id: openapi
+  conforms: false
+  evidence: The API is GraphQL; no OpenAPI/REST description is published.
+notes: >-
+  No published third-party security/compliance certification program (SOC 2 /
+  ISO 27001 / PCI / HIPAA) was found, so no Compliance pointer is emitted.

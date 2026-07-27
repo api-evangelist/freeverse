@@ -1,0 +1,44 @@
+# Freeverse / LAOS Network
+
+> Freeverse is the team behind the LAOS Network, an EVM-compatible public blockchain (Polkadot parachain) for Bridgeless Minting and Evolution of NFTs. Applications mint and dynamically evolve digital assets whose ownership is enforced on Ethereum and Polygon while asset logic and gas live on LAOS. The LAOS Foundation maintains a public GraphQL API for creating collections, minting up to 700 NFTs atomically, evolving assets, broadcasting to marketplaces, and running read queries over an on-chain indexer. Read queries are open; write mutations require an API key.
+
+## API
+- LAOS Network GraphQL API: https://api.laosnetwork.io/v2/graphql
+- API introduction: https://docs.laosnetwork.io/api/introduction
+- Getting started (obtain API key): https://docs.laosnetwork.io/api/write-queries/GettingStarted
+
+## Specs (in this repo)
+- GraphQL client-api schema (mutations: createCollection, mint, mintAsync, evolve, evolveBatch, broadcast): graphql/freeverse-laos-client-api-schema.graphql
+- GraphQL indexer schema (read queries: tokens, token, tokenHistory, transfers, ownershipContracts): graphql/freeverse-laos-indexer-schema.graphql
+
+## Docs
+- Developer documentation: https://docs.laosnetwork.io/
+- Write queries — Create Collection: https://docs.laosnetwork.io/api/write-queries/CreateCollection
+- Write queries — Mint NFT: https://docs.laosnetwork.io/api/write-queries/MintNFT
+- Write queries — Evolve NFT: https://docs.laosnetwork.io/api/write-queries/EvolveNFT
+- Write queries — Broadcast: https://docs.laosnetwork.io/api/write-queries/Broadcast
+- Read queries — Inventory: https://docs.laosnetwork.io/api/read-queries/Inventory
+- Read queries — Asset History: https://docs.laosnetwork.io/api/read-queries/AssetHistory
+- EVM interface: https://docs.laosnetwork.io/evm/introduction
+- DAME (metadata extensions): https://docs.laosnetwork.io/dame/introduction
+
+## SDKs / Packages
+- freeverse-marketsigner-js (npm): https://www.npmjs.com/package/freeverse-marketsigner-js
+- freeverse-crypto-js (npm): https://www.npmjs.com/package/freeverse-crypto-js
+- freeverse-apisigner-js (npm): https://www.npmjs.com/package/freeverse-apisigner-js
+
+## Repos
+- GitHub organization: https://github.com/freeverseio
+- LAOS APIs monorepo: https://github.com/freeverseio/laos-apis
+- LAOS examples: https://github.com/freeverseio/laos-examples
+- LAOS roadmap: https://github.com/freeverseio/LAOS-roadmap
+- LAOS whitepaper: https://github.com/freeverseio/laos-whitepaper
+
+## Supported chains
+- Ethereum Mainnet (chainId 1)
+- Polygon PoS Mainnet (chainId 137)
+
+## Company
+- Website: https://laosnetwork.io/
+- Community: https://laosnetwork.io/community
+- Backed by: Earlybird Venture Capital
