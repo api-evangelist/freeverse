@@ -6,10 +6,12 @@ server:
   name: freeverse-laos
   transport: http
   url: null
-  notes: No official hosted/remote MCP server was found for LAOS/Freeverse; tools below are DERIVED candidates from the GraphQL operations.
+  notes: No official hosted/remote MCP server was found for LAOS/Freeverse; tools below are DERIVED candidates
+    from the GraphQL operations.
 tools:
 - name: create_collection
-  description: Create a new bridgeless-minting NFT collection (deploys ERC721 + batch minter + sibling LAOS collection).
+  description: Create a new bridgeless-minting NFT collection (deploys ERC721 + batch minter + sibling
+    LAOS collection).
   source_operation: graphql/freeverse-laos-client-api-schema.graphql#createCollection
   write: true
 - name: mint_nfts
@@ -40,3 +42,9 @@ tools:
   description: List on-chain transfer events for a token or contract.
   source_operation: graphql/freeverse-laos-indexer-schema.graphql#transfers
   write: false
+deployment:
+  mode: none
+  verified: derived
+  tools: 8
+  checked: '2026-08-12'
+  source: catalog MCP census
