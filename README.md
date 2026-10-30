@@ -64,6 +64,97 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Freeverse is a company surfaced as a portfolio company of earlybird and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Freeverse is the team behind the LAOS Network, an EVM-compatible Polkadot parachain and public blockchain protocol for Bridgeless Minting and Evolution of digital assets (NFTs). Rather than bridging tokens between chains, LAOS lets applications mint and dynamically evolve NFTs whose ownership is enforced on established chains such as Ethereum and Polygon while the asset logic and gas costs live on LAOS. The LAOS Foundation maintains a public GraphQL API at api.laosnetwork.io that lets developers create collections, mint up to 700 NFTs in a single atomic operation, evolve existing assets, broadcast assets to marketplaces, and run read queries over an on-chain indexer. Read queries are open; write mutations require an API key. Freeverse originated as a Barcelona blockchain gaming and digital-ownership company (Living Assets, Crypto-soccer) and is a portfolio company of Earlybird Venture Capital.
 
-Backed by: earlybird
+**Areas:** Company · Blockchain · NFT · Web3 · Digital Assets · Gaming · GraphQL · Polkadot · Ethereum · Tokenization
+
+## Freeverse on APIs.io
+
+Everything profiled for Freeverse is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/freeverse/](https://apis.io/providers/freeverse/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [LAOS Network API](https://apis.io/apis/freeverse/laos-network-api/) — Public GraphQL API maintained by the LAOS Foundation for Bridgeless Minting and Evolution of NFTs. Create collections, mint up to 700 NFTs atomically,…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [freeverse-laos](https://apis.io/servers/freeverse/freeverse-laos/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Freeverse Authentication](https://apis.io/security/freeverse/freeverse-authentication/)
+- [Freeverse Domain Security](https://apis.io/security/freeverse/freeverse-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://laosnetwork.io/)
+- [Documentation](https://docs.laosnetwork.io/)
+- [Getting started](https://docs.laosnetwork.io/api/write-queries/GettingStarted)
+- [API reference](https://docs.laosnetwork.io/api/introduction)
+- [Support](https://laosnetwork.io/community)
+- [Changelog](https://docs.laosnetwork.io/tokenomics/change-log)
+- [Blog](https://laosnetwork.io/blog)
+- [GitHub](https://github.com/freeverseio)
+
+## API Evangelist rating
+
+**Kin Score 33.0** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 40.3 |
+| Contract governance | 4.5 |
+| Operational transparency | 23.7 |
+| Developer ergonomics | 58.9 |
+| Access clarity | 0.0 |
+
+**Agent readiness 18.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | derived (partial credit) |
+| OpenAPI Examples | documented (partial credit) |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/freeverse/](https://apis.io/providers/freeverse/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Freeverse: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/freeverse/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
